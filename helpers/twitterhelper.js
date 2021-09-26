@@ -14,8 +14,18 @@ class TwitterService {
     
     createTweet(tweetMessage){
         console.log('Tweet service requested');
-    
+         return "tweet deleted";
     }
+
+    async deleteTweet(tweetId){
+
+       let response = await this.client.post("statuses/destroy/"+tweetId);
+       if(response){
+          return true;
+       }else
+       return false;
+    }
+
 
 }
 module.exports= TwitterService;

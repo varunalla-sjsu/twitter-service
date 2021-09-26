@@ -24,6 +24,15 @@ function createRoutes(twitterserviceclient){
         twitterserviceclient.createTweet();
         res.send('Hello World!!!')
     });
+
+    router.delete('/tweet/:id',async function(req,res){
+         let tweetId = req.params.id;
+         let tweet = await twitterserviceclient.deleteTweet(tweetId);
+          if(tweet){
+              res.send('Tweet deleted');
+          }else
+             res.send('Tweet not Deleted');
+    });
     return router;
 }
 
