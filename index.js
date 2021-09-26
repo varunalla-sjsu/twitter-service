@@ -17,12 +17,17 @@ function createRoutes(twitterserviceclient){
     
     /*
         Route Endpoint to create a tweet
-        Developed By:
+        Developed By: Varun Alla
     */
-    router.get('/tweet',function(req,res){
+    router.post('/tweet',async function(req,res){
         //call twitter helper file for creationg
-        twitterserviceclient.createTweet();
-        res.send('Hello World!!!')
+        let tweetMessage=req.body.tweetMessage;
+        console.log(tweetMessage);
+        let tweet=await twitterserviceclient.createTweet(tweetMessage);
+        if(tweet)
+            res.status(200).send({status:'success',tweet:tweet});
+        else
+            res.status(200).send({status:'failure',tweet:null})
     });
 
     router.delete('/tweet/:id',async function(req,res){
@@ -36,7 +41,7 @@ function createRoutes(twitterserviceclient){
     });       
     router.get('/tweet/:tweetId',async function(req,res){
         //call twitter helper file for creationg
-        // console.log("Requested tweet..",req.params.tweetId);
+         console.log("Requested tweet..",req.params.tweetId);
         let tweet = await twitterserviceclient.getTweet(req.params.tweetId);
         res.send(tweet);
     });
@@ -52,10 +57,12 @@ function createRoutes(twitterserviceclient){
 }
 
 try{
-    let twitterserviceclient=new twitterservice();
+    let config=helpers.getTwitterClientConfig();
+    let twitterserviceclient=new twitterservice(config);
     let router=createRoutes(twitterserviceclient);
     createStartExpressServer(router);
 }
 catch(error){
     console.log('Could not start server. ',error)
 }
+module.exports=app;
