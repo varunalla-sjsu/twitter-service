@@ -53,6 +53,13 @@ function createRoutes(twitterserviceclient){
         res.send(tweet);
       
     });
+    router.get('/user',async function(req,res){
+        //call twitter helper file for creationg
+        // console.log("Requested tweet..",req.params.tweetId);
+        let user = await twitterserviceclient.getUserDetails();
+        res.send(user);
+      
+    });
     return router;
 }
 

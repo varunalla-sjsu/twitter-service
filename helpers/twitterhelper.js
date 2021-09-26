@@ -36,5 +36,10 @@ class TwitterService {
 
     }
 
+    async getUserDetails(){
+        let user= await this.client.get('account/settings');
+        return {
+           'name': user.screen_name};
+    }
 }
 module.exports= TwitterService;
