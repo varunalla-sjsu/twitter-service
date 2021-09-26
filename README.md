@@ -4,8 +4,8 @@ Assignment #2 Twitter Service
 Node JS
 Twitter Developer app setup for access tokens and keys.
 ## Setup
-clone
-install dependencies by using the command
+* clone
+* install dependencies by using the command
 ```
 npm ci
 ```

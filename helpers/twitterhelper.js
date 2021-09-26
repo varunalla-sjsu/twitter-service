@@ -1,19 +1,21 @@
 const twitterlite=require('twitter-lite');
 const helpers=require('./helper');
-let client=null;
-function createTwitterClient(){
-    try{
-        let config=helpers.getTwitterClientConfig();
-        client = new twitterlite(config);
-        return true;
+class TwitterService {
+    constructor(){
+        try{
+            let config=helpers.getTwitterClientConfig();
+            this.client = new twitterlite(config);
+            return true;
+        }
+        catch(clientCreateErr){
+            throw clientCreateErr;
+        }
     }
-    catch(clientCreateErr){
-        throw clientCreateErr;
-    }
-}
-function createTweet(tweetMessage){
     
+    createTweet(tweetMessage){
+        console.log('Tweet service requested');
+    
+    }
+
 }
-module.exports={
-    createTwitterClient
-}
+module.exports= TwitterService;
