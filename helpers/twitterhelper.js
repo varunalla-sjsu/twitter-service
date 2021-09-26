@@ -26,6 +26,25 @@ class TwitterService {
        return false;
     }
 
+    async getTweet(tweetId) {
+        console.log("Twitter get call.")
+        let tweet = await this.client.get("statuses/show", {
+            id: tweetId
+        });
+        console.log("Twitter get call.")
+        return tweet;
+
+    }
+
+    async postRetweet(tweetId) {
+        console.log("Retweet user.")
+        let retweetRes = await this.client.post("statuses/retweet", {
+            id: tweetId
+        });
+        console.log("Retweet initiated.")
+        return retweetRes;
+
+    }
 
 }
 module.exports= TwitterService;

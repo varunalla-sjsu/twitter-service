@@ -32,6 +32,21 @@ function createRoutes(twitterserviceclient){
               res.send('Tweet deleted');
           }else
              res.send('Tweet not Deleted');
+           
+    });       
+    router.get('/tweet/:tweetId',async function(req,res){
+        //call twitter helper file for creationg
+        // console.log("Requested tweet..",req.params.tweetId);
+        let tweet = await twitterserviceclient.getTweet(req.params.tweetId);
+        res.send(tweet);
+    });
+
+    router.get('/retweet/:tweetId',async function(req,res){
+        //call twitter helper file for creationg
+        // console.log("Requested tweet..",req.params.tweetId);
+        let tweet = await twitterserviceclient.postRetweet(req.params.tweetId);
+        res.send(tweet);
+      
     });
     return router;
 }
