@@ -53,6 +53,11 @@ function createRoutes(twitterserviceclient){
         res.send(tweet);
       
     });
+
+    router.get('/timeline',async function(req,res){
+        let tweets=await twitterserviceclient.getTimeline();
+        res.send(tweets);
+    })
     return router;
 }
 
