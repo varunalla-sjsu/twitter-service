@@ -4,7 +4,9 @@ class TwitterService {
     constructor(config){
             this.client = new twitterlite(config);
     }
-    
+    /*
+        Developed By: Varun Alla
+    */
     async createTweet(tweetMessage){
         return await this.client.post('statuses/update',{
             status:tweetMessage
@@ -43,7 +45,10 @@ class TwitterService {
         });
         return tweets;
     }
-
+    /*
+       user details
+        Developed By: Varun Alla
+    */
     async getUserDetails(){
         let user= await this.client.get('account/settings');
         return {

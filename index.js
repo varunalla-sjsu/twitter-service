@@ -68,6 +68,10 @@ function createRoutes(twitterserviceclient) {
         res.send(a);
 
     });
+    /*
+        Route Endpoint to create a tweet
+        Developed By: Varun Alla
+    */
     router.get('/user', async function (req, res) {
         //call twitter helper file for creationg
         // console.log("Requested tweet..",req.params.tweetId);
@@ -77,8 +81,13 @@ function createRoutes(twitterserviceclient) {
     });
 
     router.get('/timeline',async function(req,res){
+        try{
         let tweets=await twitterserviceclient.getTimeline();
         res.send(tweets);
+    }
+        catch(err){
+            console.log(err);
+        }
     })
     return router;
 }
