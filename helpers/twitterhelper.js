@@ -36,6 +36,14 @@ class TwitterService {
 
     }
 
+    async getTimeline(){
+        let tweets= await this.client.get("statuses/home_timeline",{
+            count: 30
+
+        });
+        return tweets;
+    }
+
     async getUserDetails(){
         let user= await this.client.get('account/settings');
         return {
