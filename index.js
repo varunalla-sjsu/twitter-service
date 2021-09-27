@@ -43,7 +43,7 @@ function createRoutes(twitterserviceclient) {
         }
 
         catch(err){
-            alert("Error whith deleting.." + err)
+            console.log("Error whith deleting.." , err)
         }
 
       

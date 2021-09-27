@@ -2,14 +2,15 @@ $('#twitterid').click(function(e){
     let textboxcontent=$('#twittertext').val();
     console.log('button clicked' +textboxcontent);
     let request={
-        "tweetcontent": textboxcontent
+        "tweetMessage": textboxcontent
     }
-   /* $.ajax('/tweet',{
+    $.ajax('/tweet',{
             data: JSON.stringify(request),
             contentType: 'application/json',
             method: 'POST'
     }).done(function(data) {
         console.log(data);
-    });*/
+        window.location.reload();
+    });
     
 });

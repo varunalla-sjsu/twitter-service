@@ -1,39 +1,19 @@
 
 var that = this;
+var userData=null;
 $.ajax('/user', {
-    // data: JSON.stringify(request),
     contentType: 'application/json',
     method: 'GET'
 }).done(function (data) {
     console.log(data);
-    that.userData = data;
-    // myResolve(); // when successful
+    userData = data;
 });
 
 
 
 // initial timeline get call..
 
-$.ajax('/timeline', {
-    // data: JSON.stringify(request),
-    contentType: 'application/json',
-    method: 'GET'
-}).done(function (data) {
-    console.log(data);
-    $(document).ready(function () {
-        console.log("ready!");
-        var lihtml = '';
-        var ul = document.getElementById("list");
-        var li = document.createElement("li");
-        for (var i = 0; i < data.length; i++) {
-            lihtml = lihtml + '<article> <h3><a onclick="getTweetDetails(' + "'" + data[i].user.screen_name + "'" +')">' + data[i].user.name + '</a></h3><h4><a> @' + data[i].user.screen_name + '</a></h4> <p>' + data[i].text + '</p> <br> <p> Likes ' + data[i].favorite_count + '&nbsp;Retweets ' + data[i].retweet_count + '<p> <button onclick="onDeletePost(' + "'" + data[i].id + "'" + ',' + "'" + data[i].user.screen_name + "'" + ')"' + 'class="mui-btn mui-btn--primary mui-btn--raised"> Delete </button> </article>';
-            // lihtml = lihtml + '<article> <h1> <a onclick="getTweetDetails(' + data[i].user.name + "," + data[i].text + "," + data[i].favorite_count + "," + data[i].retweet_count  + ')">' + data[i].user.name + '</a></h1></article>'
-        }
-        $("#tweetContentId").append(lihtml);
 
-    });
-
-});
 
 var modal = document.getElementById("myModal");
 window.onclick = function(event) {
