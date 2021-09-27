@@ -1,12 +1,16 @@
 
 var that = this;
 var userData=null;
-$.ajax('/user', {
-    contentType: 'application/json',
-    method: 'GET'
-}).done(function (data) {
-    console.log(data);
-    userData = data;
+$(document).ready(function(){
+    $.ajax('/user', {
+        contentType: 'application/json',
+        method: 'GET'
+    }).done(function (data) {
+        console.log(data);
+        userData = data;
+        $('#loggedInUser').html("as "+userData.name);
+    });
+    
 });
 
 
