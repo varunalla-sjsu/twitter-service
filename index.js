@@ -80,7 +80,6 @@ function createRoutes(twitterserviceclient) {
         let tweets=await twitterserviceclient.getTimeline();
         res.send(tweets);
     })
-    
     return router;
 }
 
