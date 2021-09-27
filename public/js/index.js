@@ -1,4 +1,7 @@
 
+// index.html UI code: Implemented by Aakanksha Gupta
+
+// get user data
 var that = this;
 var userData=null;
 $(document).ready(function(){
@@ -15,10 +18,6 @@ $(document).ready(function(){
 
 
 
-// initial timeline get call..
-
-
-
 var modal = document.getElementById("myModal");
 window.onclick = function(event) {
 if (event.target == modal) {
@@ -30,7 +29,8 @@ var span = document.getElementsByClassName("close")[0];
 span.onclick = function() {
     modal.style.display = "none";
   }
-function getTweetDetails(name, text, likesCount, retweetCount) {
+
+  function getTweetDetails(name, text, likesCount, retweetCount) {
 
     // console.log(id);
     if (name === that.userData.name)
